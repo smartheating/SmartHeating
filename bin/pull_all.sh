@@ -13,7 +13,7 @@ do
     # make sure that path points to a repo
     if [[ -d $path ]]
     then
-        echo $path
+        echo 🔵 $path
         git --git-dir=$path pull
     fi
 done
