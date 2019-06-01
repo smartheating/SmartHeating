@@ -6,7 +6,13 @@ depending on whether or not someone is at home. Using a variety of sensors, it c
 It can also estimate the time when the user will arrive at home based on GPS data, to preheat the house to a comfortable temperature.
 
 ## Installation
-First, you have to generate the docker-compose.yml. Go to the SmartHeating directory (this repository). 
+#### 1. Create the docker network
+We use a docker network to connect the microservices
+```bash
+docker network create smartheating
+```
+#### 2. Generate docker-compose.yml
+You have to generate the docker-compose.yml. Go to the SmartHeating directory (this repository). 
 Then make sure that `generate_docker_compose.sh` is executable:
 ```bash
 sudo chmod u+x generate_docker_compose.sh
@@ -15,6 +21,7 @@ Afterwards you can generate `docker_compose.yml` by executing the script:
 ```bash
 ./generate_docker_compose.sh 
 ```
+#### 3. Start the microservices
 Finally you can start the microservices: 
 ```bash
 docker-compose up
