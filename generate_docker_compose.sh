@@ -70,13 +70,13 @@ else
 fi
 read messagingdir
 
-if [[ "$os" == "Darwin" && "$datadir" == "" ]] 
+if [[ "$os" == "Darwin" && "$messagingdir" == "" ]] 
 then
     messagingdir=$default_mac_rabbitmqdir
-elif [[ "$os" == "Linux" && "$datadir" == "" ]]
+elif [[ "$os" == "Linux" && "$messagingdir" == "" ]]
 then
     messagingdir=$default_linux_rabbitmqdir
-elif [[ "$datadir" == "" ]]
+elif [[ "$messagingdir" == "" ]]
 then
     messagingdir=$default_win_rabbitmqdir
 fi
