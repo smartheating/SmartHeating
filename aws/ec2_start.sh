@@ -48,4 +48,4 @@ if usr_in is "0":
     for _,v in services.items():
         deploy(v)
 else:
-    deploy(service_name.get(usr_in))
+    deploy(services.get(usr_in))
