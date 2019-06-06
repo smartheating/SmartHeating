@@ -9,5 +9,3 @@ services:
     hostname: cloudgateway
     volumes:
       - "/tmp"
-    depends_on:
-      - "serviceregistration"
