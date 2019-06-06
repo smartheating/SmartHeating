@@ -25,8 +25,9 @@ def deploy(service_name):
     install_script = """#!/bin/bash
     mkdir smart_heating
     cd smart_heating
-    wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/{}/docker-compose.yml
-    sudo docker-compose up -d
+    wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/{}/install.sh
+    sudo chmod u+x install.sh
+    ./install.sh
     """.format(service_name)
     ec2 = boto3.resource("ec2", region_name='us-east-1')
     response = ec2.create_instances(
