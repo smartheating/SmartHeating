@@ -2,3 +2,4 @@
 .idea
 docker-compose.yml
 aws/env.sh
+aws/environ.sh

@@ -1,0 +1,13 @@
+version: '3.7'
+services: 
+  cloudgateway:
+    image: cloudgateway
+    container_name: cloudgateway
+    build: "../CloudGateway"
+    ports:
+      - 9001:9001
+    hostname: cloudgateway
+    volumes:
+      - "/tmp"
+    depends_on:
+      - "serviceregistration"
