@@ -4,48 +4,48 @@
 import boto3
 
 region = 'us-east-1'
-ami = "ami-09aa8a9160d48ad53"
+ami = 'ami-09aa8a9160d48ad53'
 
 services = {
-    "1": "mysql",
-    "2": "rabbitmq",
-    "3": "service_registration",
-    "4": "cloud_gateway"
+    '1': 'mysql',
+    '2': 'rabbitmq',
+    '3': 'service_registration',
+    '4': 'cloud_gateway'
 }
 
-print("\nAvailable services:")
-print("[0] all")
+print('\nAvailable services:')
+print('[0] all')
 for k,v in services.items():
-    print("[{}] {}".format(k,v))
+    print('[{}] {}'.format(k,v))
 
-print("Choose one: ")
+print('Choose one: ')
 usr_in = input()
 
 def deploy(service_name):
-    install_script = """#!/bin/bash
+    install_script = '''#!/bin/bash
     mkdir smart_heating
     cd smart_heating
     wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/service/{}/install.sh
     sudo chmod u+x install.sh
     ./install.sh
-    """.format(service_name)
-    ec2 = boto3.resource("ec2", region_name='us-east-1')
+    '''.format(service_name)
+    ec2 = boto3.resource('ec2', region_name='us-east-1')
     response = ec2.create_instances(
         TagSpecifications=[{
-                "ResourceType": "instance", 
-                "Tags": [{
-                    "Key": "Name",
-                    "Value": "{}".format(service_name)}]}],
+                'ResourceType': 'instance', 
+                'Tags': [{
+                    'Key': 'Name',
+                    'Value': '{}'.format(service_name)}]}],
         ImageId=ami,
-        InstanceType="t2.micro",
+        InstanceType='t2.micro',
         MinCount=1,
         MaxCount=1,
         UserData=install_script ,
-        SecurityGroups=["launch-wizard-1"],
-        KeyName="smart_heating")
+        SecurityGroups=['launch-wizard-1'],
+        KeyName='smart_heating')
     print(response)
 
-if usr_in is "0":
+if usr_in is '0':
     for _,v in services.items():
         deploy(v)
 else:

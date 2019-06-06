@@ -7,10 +7,9 @@ import os
 try:
     while True:
         instances = get_instances(['running', 'pending', 'shutting-down', 'stopped', 'stopping'])
+        txt = '{}\n\n{}'.format(time.ctime(), get_table(instances))
         os.system("clear")
-        print(time.ctime())
-        print("\n\n")
-        print_table(instances)
+        print(txt)
         time.sleep(1)
 except KeyboardInterrupt:
     pass

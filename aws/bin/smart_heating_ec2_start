@@ -3,9 +3,9 @@
 from lib_smh.smart_heating_aws import *
 
 instances = get_instances('stopped')
-print("Please choose the number of the instance, which you want to start:")
-print_table(instances)
-print('Or type "0" if you want to start all: ')
+print(get_table(instances))
+print("Please choose the number of the instance, which you want to start, ")
+print('or type "0" if you want to start all: ')
 usr_in = int(input())
 if usr_in == 0:
     for instance in instances:

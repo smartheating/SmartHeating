@@ -11,9 +11,11 @@ def get_instances(state_name='running') -> boto3:
     return instances
 
 
-def print_table(instances):
-    tab_data = [['[{}]'.format(i), instance.tags[0]['Value'], instance.id, instance.public_ip_address, instance.state['Name']]
+def get_table(instances):
+    if instances == None:
+        instances = []
+    tab_data = [['[{}]'.format(i), '' if instance.tags is None else instance.tags[0]['Value'], instance.id, instance.public_ip_address, instance.state['Name']]
                 for instance, i in zip(instances, range(1, len(instances) + 1))]
-    print(tabulate(tab_data, headers=['[number]', 'name', 'id', 'ip', 'state']))
+    return tabulate(tab_data, headers=['[number]', 'name', 'id', 'ip', 'state'])
 
 

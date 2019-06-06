@@ -9,9 +9,8 @@ if pem is None:
     pem = input()
 
 instances = get_instances('running')
-
+print(get_table(instances))
 print("Please choose the number of the instance, which you want to access via SSH:")
-print_table(instances)
 usr_in = int(input())
 
 
