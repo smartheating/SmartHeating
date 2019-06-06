@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# For some shell scripts you have to provide your AWS security key pairs. 
+# If you don't have them yet, please create them in the AWS console. 
+# Then store the .pem file on your disk and provide the path to the file in the following variable.
+# Finally you may want to save the file as env.sh. 
+# You can then do `source env.sh`. 
+
+
+# export PEM_SMART_HEATING={PLEASE PROVIDE THE PATH TO smart_heating.pem}
+
+# Also you may want to provide the path to SmartHeating/aws/bin. 
+# This will add the following commands to your path
+# • smart_heating_ec2_list
+# • smart_heating_ec2_ssh
+# • smart_heating_ec2_stop
+# • smart_heating_ec2_launch    
+# • smart_heating_ec2_reboot
+# • smart_heating_ec2_start
+# • smart_heating_ec2_terminate
+
+# export PATH={PATH TO SmartHeating/aws/bin}:$PATH

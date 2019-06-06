@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+from lib_smh.smart_heating_aws import *
+import time
+import os
+
+try:
+    while True:
+        instances = get_instances(['running', 'pending', 'shutting-down', 'stopped', 'stopping'])
+        os.system("clear")
+        print(time.ctime())
+        print("\n\n")
+        print_table(instances)
+        time.sleep(1)
+except KeyboardInterrupt:
+    pass
