@@ -3,7 +3,7 @@ services:
   cloudgateway:
     image: cloudgateway
     container_name: cloudgateway
-    build: "../CloudGateway"
+    build: "/smart_heating/CloudGateway"
     ports:
       - 9001:9001
     hostname: cloudgateway
