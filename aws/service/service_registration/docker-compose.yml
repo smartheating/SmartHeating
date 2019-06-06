@@ -1,0 +1,11 @@
+version: '3.3'
+services: 
+  serviceregistration:
+    image: "serviceregistration"
+    container_name: "serviceregistration"
+    build: "/smart_heating/ServiceRegistration"
+    ports: 
+      - 9000:9000
+    hostname: "serviceregistration"
+    volumes:
+      - "/tmp"
