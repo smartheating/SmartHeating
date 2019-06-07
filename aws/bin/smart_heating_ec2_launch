@@ -29,8 +29,7 @@ def deploy(service_name):
     mkdir smart_heating
     cd smart_heating
     echo "PUBLIC_IP="$(curl "ifconfig.co") >> .env
-    echo "PRIVATE_IP="(ifconfig eth0 | grep 'inet addr:' | cut -d ":" -f2 | awk '{print $1}') >> .env
-    echo "PRIVATE_IP"
+    echo "PRIVATE_IP="$(ifconfig eth0 | grep 'inet addr:' | cut -d ":" -f2 | awk '{print $1}') >> .env
 
     wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/service/'''+service_name+'''/install.sh
     sudo chmod a+x install.sh
