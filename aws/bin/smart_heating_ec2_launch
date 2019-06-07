@@ -26,14 +26,20 @@ usr_in = input()
 
 def deploy(service_name):
     install_script = '''#!/bin/bash
+    
+    # preparation...
     sudo apt update 
-    sudo apt install -y awscli 
+    sudo apt install -y awscli python-pip
+    pip install boto3
     aws configure set region 'us-east-1'
     mkdir smart_heating
     cd smart_heating
-    echo "PUBLIC_IP="$(curl "ifconfig.co") >> .env
-    echo "PRIVATE_IP="$(ifconfig eth0 | grep 'inet addr:' | cut -d ":" -f2 | awk '{print $1}') >> .env
 
+    # create the .env file which provides environment variables for docker-compose
+    wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/bin/lib_smh/create_env.py
+    python create_env.py
+
+    # install and deploy the docker container
     wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/service/'''+service_name+'''/install.sh
     sudo chmod a+x install.sh
     ./install.sh
