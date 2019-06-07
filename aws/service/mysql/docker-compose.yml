@@ -16,3 +16,5 @@ services:
       - MYSQL_VERSION=8.0.16-2debian9
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=root
+      - PUBLIC_IP=${PUBLIC_IP}
+      - PRIVATE_IP=${PRIVATE_IP}

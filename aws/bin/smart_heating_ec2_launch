@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
 # This script starts one or more smart_heating components in a docker in an ec2 instance
+# export PRIVATE_IP=$(ifconfig eth0 | grep 'inet addr:' | cut -d ":" -f2 | awk "{print $1}")
+# export PUBLIC_IP=$(curl ifconfig.co)
+
 import boto3
 
 region = 'us-east-1'
-ami = 'ami-09aa8a9160d48ad53'
+ami = 'ami-00af20496ceb57b55'
 
 services = {
     '1': 'mysql',
@@ -25,10 +28,14 @@ def deploy(service_name):
     install_script = '''#!/bin/bash
     mkdir smart_heating
     cd smart_heating
-    wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/service/{}/install.sh
+    echo "PUBLIC_IP="$(curl "ifconfig.co") >> .env
+    echo "PRIVATE_IP="(ifconfig eth0 | grep 'inet addr:' | cut -d ":" -f2 | awk '{print $1}') >> .env
+    echo "PRIVATE_IP"
+
+    wget https://raw.githubusercontent.com/smartheating/SmartHeating/master/aws/service/'''+service_name+'''/install.sh
     sudo chmod a+x install.sh
     ./install.sh
-    '''.format(service_name)
+    '''
     ec2 = boto3.resource('ec2', region_name='us-east-1')
     response = ec2.create_instances(
         TagSpecifications=[{

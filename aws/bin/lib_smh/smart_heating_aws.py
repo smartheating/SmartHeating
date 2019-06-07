@@ -14,8 +14,8 @@ def get_instances(state_name='running') -> boto3:
 def get_table(instances):
     if instances == None:
         instances = []
-    tab_data = [['[{}]'.format(i), '' if instance.tags is None else instance.tags[0]['Value'], instance.id, instance.public_ip_address, instance.state['Name']]
+    tab_data = [['[{}]'.format(i), '' if instance.tags is None else instance.tags[0]['Value'], instance.id, instance.private_ip_address, instance.public_ip_address, instance.state['Name']]
                 for instance, i in zip(instances, range(1, len(instances) + 1))]
-    return tabulate(tab_data, headers=['[number]', 'name', 'id', 'ip', 'state'])
+    return tabulate(tab_data, headers=['[number]', 'name', 'id', 'private-ip', 'public-ip', 'state'])
 
 
