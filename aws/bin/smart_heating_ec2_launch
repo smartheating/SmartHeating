@@ -26,6 +26,9 @@ usr_in = input()
 
 def deploy(service_name):
     install_script = '''#!/bin/bash
+    sudo apt update 
+    sudo apt install -y awscli 
+    aws configure set region 'us-east-1'
     mkdir smart_heating
     cd smart_heating
     echo "PUBLIC_IP="$(curl "ifconfig.co") >> .env
@@ -47,6 +50,9 @@ def deploy(service_name):
         MinCount=1,
         MaxCount=1,
         UserData=install_script ,
+        IamInstanceProfile={
+            'Name': 'EMR_EC2_DefaultRole'
+        },
         SecurityGroups=['launch-wizard-1'],
         KeyName='smart_heating')
     print(response)
