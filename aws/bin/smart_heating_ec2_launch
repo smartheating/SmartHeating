@@ -13,7 +13,8 @@ services = {
     '1': 'mysql',
     '2': 'rabbitmq',
     '3': 'service_registration',
-    '4': 'cloud_gateway'
+    '4': 'cloud_gateway',
+    '5': 'repository'
 }
 
 print('\nAvailable services:')

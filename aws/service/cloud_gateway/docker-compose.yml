@@ -10,5 +10,6 @@ services:
     environment:
       - PUBLIC_IP=${PUBLIC_IP}
       - PRIVATE_IP=${PRIVATE_IP}
+      - SERVICE_REGISTRATION_PRIVATE_IP=${SERVICE_REGISTRATION_PRIVATE_IP}
     volumes:
       - "/tmp"
