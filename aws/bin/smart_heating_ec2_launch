@@ -14,7 +14,8 @@ services = {
     '2': 'rabbitmq',
     '3': 'service_registration',
     '4': 'cloud_gateway',
-    '5': 'repository'
+    '5': 'repository',
+    '6': 'input_adapter'
 }
 
 print('\nAvailable services:')
