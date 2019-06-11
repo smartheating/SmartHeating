@@ -1,0 +1,17 @@
+version: '3.3'
+services: 
+  cloudgateway:
+    image: repository
+    container_name: repository
+    build: "/smart_heating/Repository"
+    ports:
+      - 9011:9011
+    hostname: repository
+    environment:
+      - PUBLIC_IP=${PUBLIC_IP}
+      - PRIVATE_IP=${PRIVATE_IP}
+      - SERVICE_REGISTRATION_PRIVATE_IP=${SERVICE_REGISTRATION_PRIVATE_IP}
+      - MYSQL_PRIVATE_IP=${MYSQL_PRIVATE_IP}
+      - RABBITM_PRIVATE_IP=${RABBITM_PRIVATE_IP}
+    volumes:
+      - "/tmp"
