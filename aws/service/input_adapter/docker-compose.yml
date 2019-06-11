@@ -3,7 +3,7 @@ services:
   input_adapter:
     image: input_adapter
     container_name: input_adapter
-    build: "/smart_heating/input_adapter"
+    build: "/smart_heating/InputAdapter"
     ports:
       - 9013:9013
     hostname: input_adapter
