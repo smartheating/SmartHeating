@@ -1,0 +1,16 @@
+version: '3.3'
+services: 
+  input_adapter:
+    image: input_adapter
+    container_name: input_adapter
+    build: "/smart_heating/input_adapter"
+    ports:
+      - 9013:9013
+    hostname: input_adapter
+    environment:
+      - PUBLIC_IP=${PUBLIC_IP}
+      - PRIVATE_IP=${PRIVATE_IP}
+      - SERVICE_REGISTRATION_PRIVATE_IP=${SERVICE_REGISTRATION_PRIVATE_IP}
+      - RABBITMQ_PRIVATE_IP=${RABBITMQ_PRIVATE_IP}
+    volumes:
+      - "/tmp"
