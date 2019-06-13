@@ -1,0 +1,16 @@
+version: '3.3'
+services: 
+  test_service:
+    image: test_service
+    container_name: test_service
+    build: "/smart_heating/TestService"
+    ports:
+      - 9010:9010
+    hostname: test_service
+    environment:
+      - PUBLIC_IP=${PUBLIC_IP}
+      - PRIVATE_IP=${PRIVATE_IP}
+      - SERVICE_REGISTRATION_PRIVATE_IP=${SERVICE_REGISTRATION_PRIVATE_IP}
+      - RABBITMQ_PRIVATE_IP=${RABBITMQ_PRIVATE_IP}
+    volumes:
+      - "/tmp"

@@ -15,7 +15,9 @@ services = {
     '3': 'service_registration',
     '4': 'cloud_gateway',
     '5': 'repository',
-    '6': 'input_adapter'
+    '6': 'preprocessing',
+    '7': 'input_adapter',
+    '8': 'test_service'
 }
 
 print('\nAvailable services:')
