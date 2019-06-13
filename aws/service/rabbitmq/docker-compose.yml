@@ -31,3 +31,5 @@ services:
       - LC_ALL=C.UTF-8
       - PUBLIC_IP=${PUBLIC_IP}
       - PRIVATE_IP=${PRIVATE_IP}
+    command: 
+      - rabbitmq-plugins enable rabbitmq_management
