@@ -14,3 +14,5 @@ services:
       - RABBITMQ_PRIVATE_IP=${RABBITMQ_PRIVATE_IP}
     volumes:
       - "/tmp"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"

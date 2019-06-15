@@ -9,6 +9,9 @@ services:
     hostname: mysql
     volumes:
       - /var/lib/mysql:/var/lib/mysql
+      - "/tmp"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     environment:
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       - GOSU_VERSION=1.7

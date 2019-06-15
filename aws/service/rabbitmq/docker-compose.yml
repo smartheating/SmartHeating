@@ -10,6 +10,8 @@ services:
     hostname: rabbitmq
     volumes:
       - /var/lib/rabbitmq/mnesia:/var/lib/rabbitmq/mnesia
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     environment:
       - RABBITMQ_DEFAULT_USER=rabbitUser
       - RABBITMQ_DEFAULT_PASS=rabbitPass

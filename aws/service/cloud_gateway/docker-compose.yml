@@ -15,3 +15,5 @@ services:
       - SERVICE_REGISTRATION_PRIVATE_IP=${SERVICE_REGISTRATION_PRIVATE_IP}
     volumes:
       - "/tmp"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"

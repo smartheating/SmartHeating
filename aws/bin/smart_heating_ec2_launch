@@ -32,6 +32,7 @@ def deploy(service_name):
     install_script = '''#!/bin/bash
     
     # preparation...
+    sudo timedatectl set-timezone Europe/Berlin
     sudo apt update 
     sudo apt install -y awscli python-pip
     pip install boto3
